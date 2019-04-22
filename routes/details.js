@@ -12,7 +12,7 @@ router.get("/registration", (req, res, next) => {
 });
 
 router.post("/parent", (req, res, next) => {
-    const { userName, firstName, lastName, age, email, languages, nationality, gender, location, ocupation, pictureUrl } = req.body;
+    const { userName, firstName, lastName, age, email, language, nationality, gender, location, ocupation, pictureUrl } = req.body;
     const id = uuidv4();
     const newParent = new Parent({
         id,
@@ -21,7 +21,7 @@ router.post("/parent", (req, res, next) => {
         lastName,
         email,
         age,
-        languages,
+        language,
         nationality,
         gender,
         location,
@@ -31,7 +31,14 @@ router.post("/parent", (req, res, next) => {
     newParent
         .save()
         .then(parent => {
-            res.render("parent_details", parent);
+            Parent.find({ language: language })
+                .then(matches => {
+                    res.render("parent_details", { parent, matches });
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.render("parent_details", { parent });
+                });
         })
         .catch(error => {
             console.log(error);

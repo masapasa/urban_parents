@@ -26,7 +26,7 @@ const mongoose = require('mongoose');
     },
     age: Number,
     gender: String,
-    languages: Array,
+    language: String,
     nationality: String,
     location: String,
     occupation:String,

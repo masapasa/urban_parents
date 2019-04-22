@@ -1,20 +1,20 @@
 <div>
-  <p>User name: {{userName}}</p>
-  <p>First name:{{firstName}}</p>
-  <p>Last name: {{lastName}}</p>
-  <p>Age: {{age}}</p>
-  <p>Languages: {{languages}}</p>
-  <p>Nationality: {{nationality}}</p>
-  <p>Gender: {{gender}}</p>
-  <p>Location: {{ location}}</p>
-  <p>Ocupation: {{ocupation}}</p>
-  <p>Activity: {{activity}}</p>
-  <p>Picture: {{pictureUrl}}</p>
+  <p>User name: {{parent.userName}}</p>
+  <p>First name:{{parent.firstName}}</p>
+  <p>Last name: {{parent.lastName}}</p>
+  <p>Age: {{parent.age}}</p>
+  <p>Language: {{parent.language}}</p>
+  <p>Nationality: {{parent.nationality}}</p>
+  <p>Gender: {{parent.gender}}</p>
+  <p>Location: {{ parent.location}}</p>
+  <p>Ocupation: {{parent.ocupation}}</p>
+  <p>Activity: {{parent.activity}}</p>
+  <p>Picture: {{parent.pictureUrl}}</p>
   <button onclick="addChild()">Add child</button>
   <button onclick="addActivity()">Add activity</button>
   <div id='addChild' style="visibility:hidden;">
     <form action="/child/add" method="post">
-      <input type="hidden" name="parentId" value="{{id}}" />
+      <input type="hidden" name="parentId" value="{{parent.id}}" />
       <label for="">name:</label>
       <input type="text" name="name">
 
@@ -35,7 +35,7 @@
   </div>
   <div id='addActivity' style="visibility:hidden;">
     <form action="/activity/add" method="post">
-      <input type="hidden" name="parentId" value="{{id}}" />
+      <input type="hidden" name="parentId" value="{{parent.id}}" />
 
       <label for="">Location:</label>
       <input type="text" name="location">
