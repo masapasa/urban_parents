@@ -12,6 +12,11 @@
   <p>Picture: {{parent.pictureUrl}}</p>
   <button onclick="addChild()">Add child</button>
   <button onclick="addActivity()">Add activity</button>
+  <ul>
+    {{#each matches}}
+    <li>{{ this.firstName }} {{ this.lastName }}</li>
+    {{/each}}
+  </ul>
   <div id='addChild' style="visibility:hidden;">
     <form action="/child/add" method="post">
       <input type="hidden" name="parentId" value="{{parent.id}}" />
