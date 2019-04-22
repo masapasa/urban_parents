@@ -9,7 +9,7 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
-
+//initialization of mongodb conection
 mongoose
   .connect('mongodb://localhost/urban-parents', {useNewUrlParser: true})
   .then(x => {
@@ -21,7 +21,7 @@ mongoose
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-
+//express server instance
 const app = express();
 
 // Middleware Setup
@@ -52,7 +52,10 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 const index = require('./routes/index');
+const details = require('./routes/details')
 app.use('/', index);
+app.use('/', details);
+
 
 
 module.exports = app;

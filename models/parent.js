@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
   const Schema = mongoose.Schema;
 
   const parentSchema = new Schema({
+    id:{
+      type:String,
+      required:true,
+      unique: true
+    },
     userName: {
       type: String,
       required: true
@@ -15,7 +20,12 @@ const mongoose = require('mongoose');
       type: String,
       required: true
     },
+    email: {
+      type:String,
+      required:true
+    },
     age: Number,
+    gender: String,
     languages: Array,
     nationality: String,
     location: String,

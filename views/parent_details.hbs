@@ -1,0 +1,36 @@
+<div>
+  <p>User name: {{userName}}</p>
+  <p>First name:{{firstName}}</p>
+  <p>Last name: {{lastName}}</p>
+  <p>Age: {{age}}</p>
+  <p>Languages: {{languages}}</p>
+  <p>Nationality: {{nationality}}</p>
+  <p>Gender: {{gender}}</p>
+  <p>Location: {{ location}}</p>
+  <p>Ocupation: {{ocupation}}</p>
+  <p>Activity: {{activity}}</p>
+  <p>Picture: {{pictureUrl}}</p>
+  <button onclick="addChild()">Add child</button>
+  <button onclick="addActivity()">Add activity</button>
+  <div id='addChild' style="visibility:hidden;">
+    <form action="/child/add" method="post">
+      <input type="hidden" name="parentId" value="{{id}}" />
+      <label for="">name:</label>
+      <input type="text" name="name">
+
+      <label for="">Language:</label>
+      <input type="date" name="Language">
+
+      <label for="">Age:</label>
+      <input type="text" name="age">
+
+      <label for="">Picture </label>
+      <input type="text" name="pictureUrl">
+
+      <label for="">Gender</label>
+      <input type="text" name="gender">
+
+      <button type="submit">ADD</button>
+    </form>
+  </div>
+</div>
