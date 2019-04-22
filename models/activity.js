@@ -8,7 +8,7 @@ const activitySchema = new Schema({
     },
     activityType: {
         required: true,
-        type: Array
+        type: String
     },
     time: {
         required: true,

@@ -19,7 +19,7 @@
       <input type="text" name="name">
 
       <label for="">Language:</label>
-      <input type="date" name="Language">
+      <input type="text" name="Language">
 
       <label for="">Age:</label>
       <input type="text" name="age">
@@ -29,6 +29,22 @@
 
       <label for="">Gender</label>
       <input type="text" name="gender">
+
+      <button type="submit">ADD</button>
+    </form>
+  </div>
+  <div id='addActivity' style="visibility:hidden;">
+    <form action="/activity/add" method="post">
+      <input type="hidden" name="parentId" value="{{id}}" />
+
+      <label for="">Location:</label>
+      <input type="text" name="location">
+
+      <label for="">Activity type:</label>
+      <input type="text" name="activityType">
+
+      <label for="">Time</label>
+      <input type="date" name="time">
 
       <button type="submit">ADD</button>
     </form>

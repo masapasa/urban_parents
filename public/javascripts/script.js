@@ -9,3 +9,6 @@ document.addEventListener(
 function addChild() {
     document.getElementById("addChild").style.visibility = "visible";
 }
+function addActivity() {
+  document.getElementById("addActivity").style.visibility = "visible";
+}
