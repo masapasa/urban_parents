@@ -1,7 +1,6 @@
 //parent route view
 const express = require("express");
 const router = express.Router();
-const uuidv4 = require("uuid/v4");
 const Parent = require("../models/parent");
 const Child = require("../models/child");
 const Activity = require("../models/activity");
@@ -13,9 +12,7 @@ router.get("/registration", (req, res, next) => {
 
 router.post("/parent", (req, res, next) => {
     const { userName, firstName, lastName, age, email, language, nationality, gender, location, ocupation, pictureUrl } = req.body;
-    const id = uuidv4();
     const newParent = new Parent({
-        id,
         userName,
         firstName,
         lastName,
@@ -61,32 +58,36 @@ router.post("/child/add", (req, res, next) => {
     newChild
         .save()
         .then(child => {
-            res.render("child_details", child);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-});
+            Child.find({ age: age })
+                .then(matches_child => {
+                    res.render("child_details", { child, matches_child });
+                })
+                .catch(error => {
+                    console.log(error);
 
-//activity
-router.get("/parent/:parentId/activity", (req, res, next) => {
-    res.render("activity");
-});
-router.post("/activity/add", (req, res, next) => {
-    const { location, activityType, time } = req.body;
-    const newActivity = new Activity({
-        location,
-        activityType,
-        time
+                    res.render("child_details", {child});
+                })
+        });
     });
-    newActivity
-        .save()
-        .then(activity => {
-            res.render("activity_details", activity);
-        })
-        .catch(error => {
-            console.log(error);
+    //activity
+    router.get("/parent/:parentId/activity", (req, res, next) => {
+        res.render("activity");
+    });
+    router.post("/activity/add", (req, res, next) => {
+        const { location, activityType, time } = req.body;
+        const newActivity = new Activity({
+            location,
+            activityType,
+            time
         });
-});
+        newActivity
+            .save()
+            .then(activity => {
+                res.render("activity_details", activity);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    });
 
-module.exports = router;
+    module.exports = router;

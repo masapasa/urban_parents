@@ -1,7 +1,12 @@
 <div>
-  <p>name: {{name}}</p>
-  <p>language: {{language}}</p>
-  <p>age: {{age}}</p>
-  <p>gender: {{gender}}</p>
-  <p>picture :{{picture}}<p>
+  <p>name: {{child.name}}</p>
+  <p>language: {{child.language}}</p>
+  <p>age: {{child.age}}</p>
+  <p>gender: {{child.gender}}</p>
+  <p>picture :{{child.picture}}<p>
+      <ul>
+        {{#each matches_child}}
+        <li>{{ this.name}}</li>
+        {{/each}}
+      </ul>
 </div>
